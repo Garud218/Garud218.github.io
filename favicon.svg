@@ -9,17 +9,17 @@
         rx="20" 
         ry="20" 
         fill="#5f4b8b" 
-        fill-opacity="0.1" 
+        fill-opacity="0.25" 
     />
     
     <text 
         x="50%" 
-        y="50%" 
-        dominant-baseline="central" 
+        y="52%" 
+        dominant-baseline="middle" 
         text-anchor="middle" 
-        fill="#5f4b8b" 
-        font-size="50" 
-        font-family="sans-serif" 
+        fill="#7a63a8" 
+        font-size="52" 
+        font-family="Arial, sans-serif" 
         font-weight="bold">
         TV
     </text>
