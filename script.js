@@ -1,7 +1,7 @@
 // Wait for the DOM to be fully loaded before running scripts
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Part 1: Shooting Star Animation (No Changes) ---
+    // --- Part 1: Shooting Star Animation (FIXED) ---
     
     const canvas = document.getElementById('stars-bg');
     const ctx = canvas.getContext('2d');
@@ -77,8 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animate() {
-        ctx.fillStyle = 'var(--bg-dark)';
-        ctx.fillRect(0, 0, width, height);
+        //
+        // === THIS IS THE FIX ===
+        // We clear the canvas to transparent, not a solid color.
+        // The dark background comes from the CSS 'body' style.
+        ctx.clearRect(0, 0, width, height); 
+        //
+        
         if (Date.now() - lastShootingStar > shootingStarInterval) {
             stars.push(new ShootingStar());
             lastShootingStar = Date.now();
@@ -98,11 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animate();
 
     
-    // --- Part 2: Fetch GitHub Projects (REMOVED) ---
-    // This section is no longer needed as projects are hardcoded in index.html
-
-
-    // --- Part 3: Contact Form Submission (No Changes) ---
+    // --- Part 2: Contact Form Submission (No Changes) ---
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
@@ -143,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Part 4: Smooth Scrolling for Navigation (No Changes) ---
+    // --- Part 3: Smooth Scrolling for Navigation (No Changes) ---
     document.querySelectorAll('.navbar a, .scroll-down-btn').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
