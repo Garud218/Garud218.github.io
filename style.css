@@ -1,17 +1,17 @@
 /* --- Google Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;700&display=swap');
 
-
+/* --- Global Variables --- */
 :root {
   --bg-dark: #070707;
   --text-light: #e0e0e0;
   --text-muted: #a0a0a0;
   --border-color: #1a1a1a;
   
-  /* UPDATED: New (Darker) Color Palette */
+  /* UPDATED: Darker Color Palette */
   --accent-color: #5f4b8b;
   --accent-color-rgb: 95, 75, 139;
-  --accent-hover: #7a63a8; /* Lighter purple for hover */
+  --accent-hover: #7a63a8; 
   
   --card-bg: rgba(12, 12, 12, 0.7);
   --card-border: #222;
@@ -42,7 +42,7 @@ body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: hidden; /* UPDATED: Prevents horizontal scroll */
 }
 
 /* --- SHOOTING STAR BACKGROUND --- */
@@ -75,6 +75,16 @@ h2 {
 h3 {
   font-size: 1.8rem;
   color: var(--accent-color);
+}
+/* Link inside an h3 (for Publications) */
+h3 a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+h3 a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
 }
 
 h4 {
@@ -118,7 +128,7 @@ p {
 }
 .nav-container {
   width: 100%;
-  max-width: 1100px; /* UPDATED: Wider */
+  max-width: 1300px; /* UPDATED: Wider for more space */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -135,7 +145,7 @@ p {
 }
 .nav-left a:hover { color: var(--accent-hover); }
 .nav-right {
-  display: flex; gap: 25px; /* Slightly smaller gap */
+  display: flex; gap: 25px;
 }
 .nav-right a {
   color: var(--text-muted);
@@ -180,8 +190,8 @@ p {
 
 .section-content {
   max-width: 1100px; /* UPDATED: Wider */
-  width: 100%; /* Use full width up to max-width */
-  margin: clamp(20px, 5vh, 40px) auto; /* Flexible vertical margin */
+  width: 100%;
+  margin: clamp(20px, 5vh, 40px) auto;
   padding: 40px;
   background-color: var(--card-bg);
   border-radius: 12px;
@@ -194,12 +204,9 @@ p {
 
 /* --- Section: Hero --- */
 .hero-section {
-  padding-top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 0; height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
 }
 .hero-section .section-content {
   background: none; border: none; backdrop-filter: none;
@@ -304,10 +311,10 @@ p {
 }
 .about-text p { font-size: 1.05rem; }
 
-/* --- NEW Section: Experience --- */
+/* --- Section: Experience --- */
 .experience-container {
   display: grid;
-  grid-template-columns: 1fr; /* 1 column by default */
+  grid-template-columns: 1fr;
   gap: 25px;
   text-align: left;
 }
@@ -329,41 +336,64 @@ p {
   font-weight: 300;
 }
 
-/* --- UPDATED Section: Skills (Icon Grid) --- */
-.skills-grid {
+/* --- Section: Skills (UPDATED) --- */
+.skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  text-align: left;
   width: 100%;
 }
-.skill-item {
-  background-color: rgba(26, 26, 26, 0.7);
+.skill-category {
+  background-color: #151515;
   border: 1px solid #333;
   border-radius: 8px;
-  padding: 20px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  padding: 25px;
   transition: all 0.3s ease;
 }
-.skill-item:hover {
+.skill-category:hover {
   transform: translateY(-5px);
   border-color: var(--accent-color);
-  background-color: rgba(34, 34, 34, 0.9);
 }
-.skill-item i { /* Styling for the Devicon icons */
-  font-size: 3rem;
+.skill-category h3 {
+  font-size: 1.5rem;
   color: var(--accent-color);
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
-.skill-item p {
-  font-size: 0.9rem;
+.skill-category ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Space between list items */
+}
+.skill-category li {
+  font-size: 1rem; /* Bigger text */
   color: var(--text-muted);
-  font-weight: 500;
-  margin-bottom: 0;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space between icon and text */
+  transition: color 0.3s ease;
+}
+.skill-category li:hover {
+  color: var(--text-light);
+}
+.skill-category li i {
+  font-size: 1.4rem;
+  color: var(--accent-color);
+  width: 25px; /* Align icons */
   text-align: center;
 }
+/* Style for Simple Icons (si) */
+.skill-category li .si {
+  font-family: 'simple-icons';
+  font-size: 1.2rem;
+  font-style: normal;
+}
+
 
 /* --- Section: Projects --- */
 .projects-grid {
@@ -406,14 +436,10 @@ p {
   letter-spacing: 0.05em;
 }
 
-/* --- Section: Publications (was Research) --- */
+/* --- Section: Publications --- */
 .research-content {
   display: flex; flex-direction: column;
   gap: 25px;
-}
-.research-item h3 {
-  font-size: 1.5rem; margin-bottom: 5px;
-  color: var(--accent-color);
 }
 .research-item .research-meta {
   font-size: 0.9rem; color: var(--text-muted);
@@ -443,13 +469,13 @@ p {
   font-size: 1rem;
   transition: all 0.3s ease;
   font-weight: 500;
-  padding: 16px 20px; /* More padding */
+  padding: 16px 20px;
 }
 .resume-btn i {
   font-size: 1.5rem;
   color: var(--accent-color);
   transition: color 0.3s ease;
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  flex-shrink: 0;
 }
 .resume-btn:hover {
   background-color: #222;
@@ -542,9 +568,7 @@ footer p {
     height: auto; min-height: 100vh;
   }
   
-  .hero-section {
-    padding-top: 0;
-  }
+  .hero-section { padding-top: 0; }
   .hero-section h1 { font-size: 3.5rem; }
   .hero-section .tagline { font-size: 1.2rem; }
   
@@ -566,22 +590,15 @@ footer p {
   }
   
   .projects-grid,
-  .all-resumes-list {
+  .all-resumes-list,
+  .skills-container {
     grid-template-columns: 1fr;
-  }
-  
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  }
-
-  .experience-container {
-    grid-template-columns: 1fr; /* Stack on mobile */
   }
 }
 
-/* Responsive adjustment for two columns in Experience on medium screens */
+/* Two columns for Experience & Skills on medium screens */
 @media (min-width: 769px) {
-  .experience-container {
+  .experience-container, .skills-container {
     grid-template-columns: 1fr 1fr;
   }
 }
