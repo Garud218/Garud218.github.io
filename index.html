@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tushar Verma | Profile</title>
+    <title>Tushar Verma | Portfolio</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <canvas id="stars-bg"></canvas>
@@ -16,61 +14,123 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="#">Tushar Verma</a>
+                <a href="#home">Tushar Verma</a>
             </div>
             <div class="nav-right">
                 <a href="#about">About</a>
                 <a href="#projects">Projects</a>
+                <a href="#research">Research</a>
                 <a href="#resume">Resume</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <div class="content">
-        <main>
-            <section id="about">
-                <div class="about-container">
-                    <div class="profile-placeholder">
-                        </div>
-                    <div class="about-text">
-                        <h2>About Me</h2>
-                        <p>
-                            Hello! I'm a developer passionate about building tools and exploring new technologies. 
-                            I enjoy working on open-source projects and creating efficient, scalable solutions. 
-                            Welcome to my little corner of the internet.
-                        </p>
-                    </div>
-                </div>
-            </section>
+    <div class="scroll-container">
+        <section id="home" class="full-screen-section hero-section">
+            <div class="section-content">
+                <p class="intro-text">Hello, I'm</p>
+                <h1>Tushar Verma</h1>
+                <p class="tagline">Developer | Researcher | Innovator</p>
+                <a href="#about" class="btn primary-btn scroll-down-btn">Explore My Work</a>
+            </div>
+        </section>
 
-            <section id="projects">
+        <section id="about" class="full-screen-section">
+            <div class="section-content about-layout">
+                <div class="profile-image-container">
+                    <img src="profile.jpg" alt="Tushar Verma Profile" class="profile-image">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>
+                        Hello! I'm Tushar, a passionate developer and researcher with a keen interest in building impactful tools and exploring cutting-edge technologies. My work often involves leveraging open-source platforms to create efficient, scalable, and innovative solutions. I thrive in environments that challenge me to continuously learn and adapt, pushing the boundaries of what's possible in the tech landscape.
+                    </p>
+                    <p>
+                        Beyond coding, I'm deeply involved in academic research, contributing to publications and exploring theoretical concepts that bridge the gap between abstract ideas and practical applications. Welcome to my digital space, where I showcase my journey in development and research.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="full-screen-section">
+            <div class="section-content">
                 <h2>My Projects</h2>
-                <p>Here are some of the projects I've been working on, pulled directly from my GitHub.</p>
-                <div id="project-list">
+                <p class="section-description">A selection of my recent work, showcasing diverse skills and interests, pulled directly from my GitHub profile.</p>
+                <div id="project-list" class="projects-grid">
                     <p>Loading projects...</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="resume">
+        <section id="research" class="full-screen-section">
+            <div class="section-content">
+                <h2>Research & Publications</h2>
+                <p class="section-description">Details on my academic contributions, lab research, and published works.</p>
+                <div class="research-content">
+                    <div class="research-item">
+                        <h3>[Publication Title 1]</h3>
+                        <p class="research-meta">Journal/Conference, Year | <a href="#" target="_blank">Link to Paper</a></p>
+                        <p class="research-abstract">A brief abstract or summary of the research. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="research-item">
+                        <h3>[Publication Title 2]</h3>
+                        <p class="research-meta">Journal/Conference, Year | <a href="#" target="_blank">Link to Paper</a></p>
+                        <p class="research-abstract">Another summary of key findings and contributions. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="resume" class="full-screen-section">
+            <div class="section-content">
                 <h2>Resume</h2>
-                <p>You can view and download my full resume here.</p>
-                <a href="resume.pdf" class="btn" target="_blank" rel="noopener noreferrer">
-                    Download Resume (PDF)
+                <p class="section-description">View my professional qualifications and experience.</p>
+                <a href="resumes/resume-latest.pdf" class="btn primary-btn" target="_blank" rel="noopener noreferrer">
+                    Download Latest Resume (PDF)
                 </a>
-            </section>
+                <div class="all-resumes-list">
+                    <h3>All Resumes</h3>
+                    <ul>
+                        <li><a href="resumes/resume-v1.pdf" target="_blank" rel="noopener noreferrer">Resume - Version 1 (Month Year)</a></li>
+                        <li><a href="resumes/resume-v2.pdf" target="_blank" rel="noopener noreferrer">Resume - Version 2 (Month Year)</a></li>
+                        <li><a href="resumes/resume-v3.pdf" target="_blank" rel="noopener noreferrer">Resume - Version 3 (Month Year)</a></li>
+                        <li><a href="resumes/resume-v4.pdf" target="_blank" rel="noopener noreferrer">Resume - Version 4 (Month Year)</a></li>
+                        <li><a href="resumes/resume-v5.pdf" target="_blank" rel="noopener noreferrer">Resume - Version 5 (Month Year)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-            <section id="contact">
-                <h2>Contact Me</h2>
-                <p>Feel free to reach out! The best way to get in touch is by email.</p>
-                <a href="mailto:your-email@example.com" class="btn">
-                    Say Hello
-                </a>
-            </section>
-        </main>
+        <section id="contact" class="full-screen-section">
+            <div class="section-content">
+                <h2>Get In Touch</h2>
+                <p class="section-description">Have a question or a project idea? Feel free to send me a message.</p>
+                <form id="contact-form" action="https://formspree.io/f/your_formspree_hash" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="_replyto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Send Message</button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </section>
 
         <footer>
-            <p>&copy; 2025 Tushar Verma. All projects are my own.</p>
+            <p>&copy; 2024 Tushar Verma. All rights reserved.</p>
         </footer>
     </div>
     
