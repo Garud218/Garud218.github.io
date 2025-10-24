@@ -250,19 +250,46 @@ p {
 
 /* --- Reusable Components --- */
 .social-links {
-  display: flex; justify-content: center;
-  gap: 25px; margin-top: 30px;
+  display: flex; /* This is the key property for alignment */
+  justify-content: center; /* This centers the group of icons */
+  align-items: center; /* This vertically aligns them */
+  gap: 25px; /* This controls the spacing between icons */
+  margin-top: 30px;
 }
+
 .social-links a {
   color: var(--text-muted);
-  font-size: 1.8rem;
+  font-size: 1.8rem; /* Controls the icon size */
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .social-links a:hover {
   color: var(--accent-color);
   transform: scale(1.1) translateY(-3px);
 }
+
+/* Specific styling for the footer links */
+.footer-socials { 
+  margin-bottom: 20px; 
+  margin-top: 0; /* Footer links don't need a top margin */
+}
+
+/* This handles the Simple Icons (like ResearchGate) */
+.social-links .si {
+  font-family: 'simple-icons';
+  font-style: normal;
+  font-size: 1.6rem; /* Slightly adjust size to match others */
+  vertical-align: middle;
+}
+
+/* This handles Font Awesome icons (like X, Instagram, Email) */
+.social-links .fas,
+.social-links .fa-brands {
+  font-size: 1.6rem; /* Slightly adjust size to match others */
+  vertical-align: middle;
+}
+
 .hero-socials { opacity: 0; animation: fadeIn 1s ease-out 1.4s forwards; }
 .contact-socials { margin-top: 40px; }
 .footer-socials { margin-bottom: 20px; }
