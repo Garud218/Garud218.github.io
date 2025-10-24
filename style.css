@@ -1,4 +1,13 @@
-/* Basic reset and global styles */
+/*
+  --- UPDATED: style.css (v3) ---
+*/
+
+/* --- Global Variables & Font --- */
+:root {
+    /* You can change this one color to theme your whole site! */
+    --accent-color: #3a86ff; /* A nice, bright blue */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,30 +15,38 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0a0a0a; /* Very dark background */
-    color: #e0e0e0; /* Light gray text for readability */
+    /* UPDATED: Global font set to Manrope */
+    font-family: 'Manrope', 'Makna', sans-serif;
+    /* (If you buy Makna, just list it first like this) */
+    
+    background-color: #0a0a0a;
+    color: #e0e0e0;
     line-height: 1.6;
+    font-weight: 300; /* Default to a lighter weight */
 }
 
-/* The shooting star canvas */
+/* --- Star Background (No Change) --- */
 #stars-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Puts it behind all other content */
+    z-index: -1;
 }
 
-/* --- NEW: Navigation Bar Styles --- */
+/* --- UPDATED: Navigation Bar Styles --- */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 10, 10, 0.7); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Gaussian blur */
+    
+    /* UPDATED: Slightly more opaque for better readability */
+    background-color: rgba(10, 10, 10, 0.85); 
+    
+    /* UPDATED: Slightly more blur */
+    backdrop-filter: blur(12px); 
     border-bottom: 1px solid #222;
     z-index: 100;
 }
@@ -37,7 +54,10 @@ body {
 .nav-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    
+    /* UPDATED: Sleeker vertical padding */
+    padding: 15px 20px; 
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,9 +65,10 @@ body {
 
 .nav-left a {
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* Slightly smaller, more refined */
     font-weight: 700;
     text-decoration: none;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2); /* Subtle glow */
 }
 
 .nav-right {
@@ -58,98 +79,100 @@ body {
 .nav-right a {
     color: #aaa;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 500; /* Medium weight for links */
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-right a:hover {
-    color: #ffffff;
+    color: var(--accent-color); /* Use accent color on hover */
+    transform: scale(1.05); /* Slight zoom */
 }
 /* --- End of Navbar Styles --- */
 
 
-/* Main content container */
+/* --- Main Content Container --- */
 .content {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-    /* This ensures content is on top of the canvas */
     position: relative;
     z-index: 1;
     
-    /* UPDATED: Add padding to top to avoid navbar overlap */
-    padding-top: 120px; 
+    /* UPDATED: Adjusted for new navbar height */
+    padding-top: 100px; 
 }
 
-/* Header (Removed) - The old header style is no longer needed */
-
-/* Section styling */
+/* --- UPDATED: Section Styling (More Compact) --- */
 section {
-    margin-bottom: 50px;
-    padding: 25px;
-    background-color: rgba(18, 18, 18, 0.65); /* Semi-transparent dark cards */
+    /* UPDATED: Reduced margin for a tighter layout */
+    margin-bottom: 40px; 
+    
+    /* UPDATED: Reduced padding for a more compact card */
+    padding: 22px; 
+    
+    background-color: rgba(18, 18, 18, 0.7); /* More transparent */
     border-radius: 8px;
     border: 1px solid #222;
+    backdrop-filter: blur(10px);
     
-    /* UPDATED: Enhanced Gaussian blur */
-    backdrop-filter: blur(10px); 
+    /* Add a subtle transition for future effects */
+    transition: all 0.3s ease;
 }
 
 section h2 {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Refined size */
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 15px;
-    border-bottom: 1px solid #444;
+    
+    /* UPDATED: Use accent color for the border */
+    border-bottom: 1px solid var(--accent-color); 
     padding-bottom: 10px;
 }
 
 section p {
     font-weight: 300;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-bottom: 20px;
 }
 
-/* --- NEW: About Section Layout --- */
+/* --- UPDATED: About Section Layout --- */
 .about-container {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 25px; /* Reduced gap */
 }
 
 .profile-placeholder {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Makes it circular */
-    background-color: #2a2a2a;
-    border: 2px solid #444;
-    flex-shrink: 0; /* Prevents the circle from shrinking */
+    width: 140px; /* Slightly smaller */
+    height: 140px;
+    border-radius: 50%;
+    flex-shrink: 0;
     
-    /* If you use an <img>, add these */
-    /* object-fit: cover; */
-    /* overflow: hidden; */
+    /* UPDATED: Add gradient and glow for a premium feel */
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 2px solid #333;
+    box-shadow: 0 0 20px rgba(var(--accent-color), 0.2); 
 }
 
 .about-text {
     flex-grow: 1;
 }
 
-/* Move h2 margin to the .about-text div */
 .about-text h2 {
     margin-bottom: 15px;
 }
 /* --- End of About Section --- */
 
 
-/* Project list styling */
+/* --- UPDATED: Project List Styling --- */
 #project-list {
     display: grid;
-    grid-template-columns: 1fr; /* 1 column by default */
+    grid-template-columns: 1fr;
     gap: 15px;
 }
 
-/* A single project card */
 .project-card {
     display: block;
     padding: 20px;
@@ -158,17 +181,27 @@ section p {
     border: 1px solid #333;
     text-decoration: none;
     color: #e0e0e0;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    
+    /* UPDATED: Add transform to the transition */
+    transition: background-color 0.3s ease, 
+                border-color 0.3s ease, 
+                transform 0.3s ease, 
+                box-shadow 0.3s ease;
 }
 
 .project-card:hover {
     background-color: #222;
-    border-color: #555;
+    border-color: var(--accent-color); /* Use accent color */
+    
+    /* UPDATED: Add "lift" and shadow on hover */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .project-card h3 {
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    font-weight: 700;
     margin-bottom: 5px;
 }
 
@@ -179,23 +212,37 @@ section p {
     color: #bbb;
 }
 
-/* Button styling (for Resume and Contact) */
+/* --- UPDATED: Button Styling --- */
 .btn {
     display: inline-block;
-    padding: 12px 25px;
-    background-color: #e0e0e0;
-    color: #0a0a0a;
+    padding: 10px 22px; /* Sleeker padding */
+    
+    /* UPDATED: Use accent color */
+    background-color: var(--accent-color);
+    color: #ffffff;
+    
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 500; /* Medium weight */
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border: 1px solid var(--accent-color);
+    
+    /* UPDATED: Add transform to transition */
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                transform 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #ffffff;
+    /* Lighter shade of accent on hover */
+    background-color: #589bff; 
+    border-color: #589bff;
+    
+    /* Subtle lift */
+    transform: translateY(-2px); 
+    box-shadow: 0 5px 10px rgba(var(--accent-color), 0.2);
 }
 
-/* Footer */
+/* --- Footer (No Change) --- */
 footer {
     text-align: center;
     margin-top: 40px;
