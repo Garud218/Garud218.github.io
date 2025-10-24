@@ -22,6 +22,53 @@ body {
     z-index: -1; /* Puts it behind all other content */
 }
 
+/* --- NEW: Navigation Bar Styles --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.7); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Gaussian blur */
+    border-bottom: 1px solid #222;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-right {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-right a {
+    color: #aaa;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-right a:hover {
+    color: #ffffff;
+}
+/* --- End of Navbar Styles --- */
+
+
 /* Main content container */
 .content {
     max-width: 800px;
@@ -30,44 +77,23 @@ body {
     /* This ensures content is on top of the canvas */
     position: relative;
     z-index: 1;
+    
+    /* UPDATED: Add padding to top to avoid navbar overlap */
+    padding-top: 120px; 
 }
 
-/* Header and Navigation */
-header {
-    text-align: center;
-    margin-bottom: 60px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 20px;
-}
-
-header h1 {
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
-
-header nav a {
-    color: #aaa;
-    text-decoration: none;
-    font-weight: 300;
-    margin: 0 15px;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-header nav a:hover {
-    color: #ffffff;
-}
+/* Header (Removed) - The old header style is no longer needed */
 
 /* Section styling */
 section {
     margin-bottom: 50px;
-    padding: 20px;
-    background-color: rgba(18, 18, 18, 0.6); /* Semi-transparent dark cards */
+    padding: 25px;
+    background-color: rgba(18, 18, 18, 0.65); /* Semi-transparent dark cards */
     border-radius: 8px;
     border: 1px solid #222;
-    backdrop-filter: blur(5px); /* Frosted glass effect */
+    
+    /* UPDATED: Enhanced Gaussian blur */
+    backdrop-filter: blur(10px); 
 }
 
 section h2 {
@@ -84,6 +110,37 @@ section p {
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
+
+/* --- NEW: About Section Layout --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes it circular */
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    flex-shrink: 0; /* Prevents the circle from shrinking */
+    
+    /* If you use an <img>, add these */
+    /* object-fit: cover; */
+    /* overflow: hidden; */
+}
+
+.about-text {
+    flex-grow: 1;
+}
+
+/* Move h2 margin to the .about-text div */
+.about-text h2 {
+    margin-bottom: 15px;
+}
+/* --- End of About Section --- */
+
 
 /* Project list styling */
 #project-list {
@@ -122,7 +179,7 @@ section p {
     color: #bbb;
 }
 
-/* Button styling (for Resume) */
+/* Button styling (for Resume and Contact) */
 .btn {
     display: inline-block;
     padding: 12px 25px;
