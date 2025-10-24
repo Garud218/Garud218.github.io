@@ -7,12 +7,9 @@
   --text-light: #e0e0e0;
   --text-muted: #a0a0a0;
   --border-color: #1a1a1a;
-  
-  /* UPDATED: Darker Color Palette */
   --accent-color: #5f4b8b;
   --accent-color-rgb: 95, 75, 139;
   --accent-hover: #7a63a8; 
-  
   --card-bg: rgba(12, 12, 12, 0.7);
   --card-border: #222;
   --blur-strength: 15px;
@@ -21,7 +18,7 @@
   --font-body: 'Inter', sans-serif;
 }
 
-/* --- Base & Scroll Setup --- */
+/* --- Base & Scroll Setup (UPDATED) --- */
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +28,8 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  height: 100%;
+  overflow: hidden; /* Hide main browser scrollbar */
 }
 
 body {
@@ -42,7 +40,19 @@ body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden; /* UPDATED: Prevents horizontal scroll */
+  height: 100%; /* Fill viewport */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-y: hidden; /* Prevent vertical scroll on body */
+}
+
+/* --- Selection Highlight Color (NEW) --- */
+::selection {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+::-moz-selection { /* Firefox */
+  background-color: var(--accent-color);
+  color: #ffffff;
 }
 
 /* --- SHOOTING STAR BACKGROUND --- */
@@ -63,7 +73,6 @@ h1, h2, h3, h4 {
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
 }
-
 h2 {
   font-size: 2.8rem;
   border-bottom: 2px solid var(--accent-color);
@@ -71,12 +80,10 @@ h2 {
   margin-bottom: 1.5rem;
   display: inline-block;
 }
-
 h3 {
   font-size: 1.8rem;
   color: var(--accent-color);
 }
-/* Link inside an h3 (for Publications) */
 h3 a {
   color: var(--accent-color);
   text-decoration: none;
@@ -86,14 +93,19 @@ h3 a:hover {
   color: var(--accent-hover);
   text-decoration: underline;
 }
-
+/* Style for new link icon (NEW) */
+h3 a i.fa-link {
+  font-size: 1.3rem; /* Smaller than title */
+  font-weight: 600;
+  margin-left: 10px;
+  vertical-align: middle;
+}
 h4 {
   font-size: 1.2rem;
   color: var(--text-light);
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
-
 p {
   font-size: 1.05rem;
   font-weight: 300;
@@ -101,7 +113,6 @@ p {
   margin-bottom: 1.2rem;
   line-height: 1.7;
 }
-
 .section-description {
   font-size: 1.1rem;
   color: var(--text-muted);
@@ -116,19 +127,19 @@ p {
 }
 .section-description a:hover { text-decoration: underline; }
 
-/* --- Layout: Navbar --- */
+/* --- Layout: Navbar (UPDATED) --- */
 .navbar {
   position: fixed; top: 0; left: 0;
   width: 100%; height: var(--nav-height);
   background-color: rgba(7, 7, 7, 0.85);
-  backdrop-filter: blur(var(--blur-strength)); /* GUASSIAN BLUR */
+  backdrop-filter: blur(var(--blur-strength));
   border-bottom: 1px solid var(--border-color);
   z-index: 100; display: flex;
   align-items: center; padding: 0 4vw;
 }
 .nav-container {
   width: 100%;
-  max-width: 1300px; /* UPDATED: Wider for more space */
+  max-width: 1300px; /* UPDATED: Wider navbar */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -169,34 +180,39 @@ p {
 }
 .nav-right a:hover::after { width: 100%; }
 
-/* --- Layout: Full Screen Sections --- */
+/* --- Layout: Full Screen Sections (UPDATED) --- */
 .scroll-container {
-  height: 100vh;
-  overflow-y: auto;
+  height: 100%; /* Fill viewport */
+  overflow-y: auto; /* This is the ONLY scrollbar */
   scroll-snap-type: y mandatory;
 }
 
 .full-screen-section {
-  width: 100vw;
-  height: 100vh;
+  width: 100%; /* Use 100% not 100vw */
+  min-height: 100vh; /* Use min-height to allow content to grow */
+  height: auto; /* Height is flexible */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--nav-height) 2vw 0 2vw; /* Equal left/right padding */
+  padding: var(--nav-height) 2vw 0 2vw;
   scroll-snap-align: start;
   position: relative;
-  overflow-y: auto;
+  /* overflow-y: auto; removed */
+}
+/* Ensure first section snaps to top */
+#home {
+  height: 100vh;
 }
 
 .section-content {
   max-width: 1100px; /* UPDATED: Wider */
   width: 100%;
-  margin: clamp(20px, 5vh, 40px) auto;
+  margin: clamp(40px, 8vh, 80px) auto; /* Flexible vertical margin */
   padding: 40px;
   background-color: var(--card-bg);
   border-radius: 12px;
   border: 1px solid var(--card-border);
-  backdrop-filter: blur(var(--blur-strength)); /* GUASSIAN BLUR */
+  backdrop-filter: blur(var(--blur-strength));
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.5s ease-out;
@@ -204,13 +220,13 @@ p {
 
 /* --- Section: Hero --- */
 .hero-section {
-  padding-top: 0; height: 100vh;
+  padding-top: 0;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
 }
 .hero-section .section-content {
   background: none; border: none; backdrop-filter: none;
-  box-shadow: none; padding: 0;
+  box-shadow: none; padding: 0; margin: 0 auto;
 }
 .hero-section .intro-text {
   font-size: 1.5rem; color: var(--accent-color);
@@ -339,61 +355,61 @@ p {
 /* --- Section: Skills (UPDATED) --- */
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr; /* 1 column on mobile */
+  gap: 30px; /* Space between categories */
   text-align: left;
   width: 100%;
-}
-.skill-category {
-  background-color: #151515;
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 25px;
-  transition: all 0.3s ease;
-}
-.skill-category:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent-color);
 }
 .skill-category h3 {
   font-size: 1.5rem;
   color: var(--accent-color);
   border-bottom: 1px solid #444;
   padding-bottom: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  text-align: left;
 }
-.skill-category ul {
-  list-style: none;
-  padding: 0;
+.skills-grid {
+  display: grid;
+  /* Responsive grid, min 110px width */
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 20px;
+}
+.skill-item {
+  background-color: rgba(26, 26, 26, 0.7);
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Space between list items */
-}
-.skill-category li {
-  font-size: 1rem; /* Bigger text */
-  color: var(--text-muted);
-  font-weight: 400;
-  display: flex;
   align-items: center;
-  gap: 12px; /* Space between icon and text */
-  transition: color 0.3s ease;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
 }
-.skill-category li:hover {
-  color: var(--text-light);
+.skill-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  background-color: rgba(34, 34, 34, 0.9);
 }
-.skill-category li i {
-  font-size: 1.4rem;
+/* Style for Devicon */
+.skill-item i {
+  font-size: 3rem;
   color: var(--accent-color);
-  width: 25px; /* Align icons */
-  text-align: center;
 }
 /* Style for Simple Icons (si) */
-.skill-category li .si {
+.skill-item .si {
   font-family: 'simple-icons';
-  font-size: 1.2rem;
   font-style: normal;
+  font-size: 2.8rem;
+  color: var(--accent-color);
 }
-
+.skill-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 0;
+  text-align: center;
+}
 
 /* --- Section: Projects --- */
 .projects-grid {
@@ -471,6 +487,7 @@ p {
   font-weight: 500;
   padding: 16px 20px;
 }
+/* Includes devicon (i) and fontawesome (i.fas) */
 .resume-btn i {
   font-size: 1.5rem;
   color: var(--accent-color);
@@ -565,7 +582,8 @@ footer p {
 
   .full-screen-section {
     padding-top: calc(var(--nav-height) + 60px);
-    height: auto; min-height: 100vh;
+    min-height: 100vh;
+    height: auto;
   }
   
   .hero-section { padding-top: 0; }
@@ -590,9 +608,12 @@ footer p {
   }
   
   .projects-grid,
-  .all-resumes-list,
-  .skills-container {
+  .all-resumes-list {
     grid-template-columns: 1fr;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   }
 }
 
