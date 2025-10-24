@@ -250,73 +250,81 @@ p {
 
 /* --- Reusable Components --- */
 .social-links {
-  display: flex; /* This is the key property for alignment */
-  justify-content: center; /* This centers the group of icons */
-  align-items: center; /* This vertically aligns them */
-  gap: 25px; /* This controls the spacing between icons */
-  margin-top: 30px;
+  display: flex; /* Aligns all <a> tags in a row */
+  justify-content: center; /* Centers the group of icons */
+  align-items: center; /* Vertically aligns all <a> tags */
+  gap: 25px; 
+  margin-top: 30px;
 }
 
 .social-links a {
-  color: var(--text-muted);
-  font-size: 1.8rem; /* Controls the icon size */
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
+  color: var(--text-muted);
+  font-size: 1.8rem; /* Base icon size */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  
+  /* === FIX: Make the link a flex container === */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* This forces the <i> tag inside to be perfectly centered */
 }
 
 .social-links a:hover {
-  color: var(--accent-color);
-  transform: scale(1.1) translateY(-3px);
+  color: var(--accent-color);
+  transform: scale(1.1) translateY(-3px);
 }
 
 /* Specific styling for the footer links */
-.footer-socials { 
-  margin-bottom: 20px; 
-  margin-top: 0; /* Footer links don't need a top margin */
+.footer-socials { 
+  margin-bottom: 20px; 
+  margin-top: 0;
 }
 
 /* This handles the Simple Icons (like ResearchGate) */
 .social-links .si {
-  font-family: 'simple-icons';
-  font-style: normal;
-  font-size: 1.6rem; /* Slightly adjust size to match others */
-  vertical-align: middle;
+  font-family: 'simple-icons';
+  font-style: normal;
+  font-size: 1.6rem; /* Visually scale to match others */
+  /* vertical-align: middle; -- REMOVED */
 }
 
 /* This handles Font Awesome icons (like X, Instagram, Email) */
 .social-links .fas,
 .social-links .fa-brands {
-  font-size: 1.6rem; /* Slightly adjust size to match others */
-  vertical-align: middle;
+  font-size: 1.6rem; /* Visually scale to match others */
+  /* vertical-align: middle; -- REMOVED */
 }
+
+/* --- (Other styles you pasted are fine) --- */
 
 .hero-socials { opacity: 0; animation: fadeIn 1s ease-out 1.4s forwards; }
 .contact-socials { margin-top: 40px; }
 .footer-socials { margin-bottom: 20px; }
 
 .btn {
-  font-family: var(--font-body);
-  display: inline-block;
-  padding: 14px 30px;
-  font-weight: 500;
-  font-size: 1.0rem;
-  text-decoration: none;
-  border-radius: 8px;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease-out;
+  font-family: var(--font-body);
+  display: inline-block;
+  padding: 14px 30px;
+  font-weight: 500;
+  font-size: 1.0rem;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease-out;
 }
 .primary-btn {
-  background-color: var(--accent-color);
-  color: #ffffff;
-  border: 1px solid var(--accent-color);
-  box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.3);
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.3);
 }
 .primary-btn:hover {
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.4);
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.4);
 }
 
 /* Base card style */
